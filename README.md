@@ -1,12 +1,12 @@
 # Go gRPC server with Object Relation Mapping using the Ent framework. 
 
 
-While I'm still a little unsteady about code generation, I can't deny that this framework was able to accomplish quite a bit in just a few minutes. I love that that've integrated protobuf into their workflow so nicely.  
+While I'm still a little unsteady about code generation, I can't deny that this framework was able to accomplish quite a bit in just a few minutes. I love that they've integrated protobuf into their workflow so nicely.  
   
   
 This small POC was accomplished by following a tutorial from the main Ent website.
 
-While it is just a small POC, and copied directly from a website, I feel like this small bit of code speaks volumes about the future of back end, and event the front-end.
+While it is just a small POC, and copied directly from a website, I feel like this small bit of code speaks volumes about the future of back end, and even the front-end.
 
 
 With event-driven architecture being more tangible than ever before, I can absolutely see the value in using an ORM to bootstrap a protofile, create your routes, and move on to the next service!
