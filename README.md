@@ -1,7 +1,7 @@
 # Go gRPC server with Object Relation Mapping using the Ent framework. 
 
 
-While I'm still a little unstead about coee generation, I can't deny that this framework was able to accomplish quite a bit in just a few minutes. I love that that've integrated protobuf into their workflow so nicely.  
+While I'm still a little unsteady about code generation, I can't deny that this framework was able to accomplish quite a bit in just a few minutes. I love that that've integrated protobuf into their workflow so nicely.  
   
   
 This small POC was accomplished by following a tutorial from the main Ent website.
