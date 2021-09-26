@@ -17,56 +17,56 @@ import (
 )
 
 func main() {
-    viper.SetConfigFile(".env")
-    if err := viper.ReadInConfig(); err != nil {
-        log.Fatalf("Error reading config file")
-    }
+	viper.SetConfigFile(".env")
+	if err := viper.ReadInConfig(); err != nil {
+		log.Fatalf("Error reading config file")
+	}
 
-    client, err := ent.Open(
-    dialect.MySQL, 
-    fmt.Sprintf(
-    "%s:%s@tcp(%s:%s)/test", 
-    viper.GetString("DB_USER"),
-    viper.GetString("DB_PASSWORD"), 
-    viper.GetString("DB_URL"), 
-    viper.GetString("DB_PORT"),
-    ))
+	client, err := ent.Open(
+		dialect.MySQL,
+		fmt.Sprintf(
+			"%s:%s@tcp(%s:%s)/test",
+			viper.GetString("DB_USER"),
+			viper.GetString("DB_PASSWORD"),
+			viper.GetString("DB_URL"),
+			viper.GetString("DB_PORT"),
+		))
 
-    if err != nil {
-        log.Fatalf("failed connecting to mysql: %v", err)
-    }
-    defer client.Close()
+	if err != nil {
+		log.Fatalf("failed connecting to mysql: %v", err)
+	}
+	defer client.Close()
 
-    ctx := context.Background()
-    // Run migration.
-    err = client.Schema.Create(
-        ctx,
+	ctx := context.Background()
+	// Run migration.
+	err = client.Schema.Create(
+		ctx,
 		migrate.WithGlobalUniqueID(true),
-        migrate.WithDropIndex(true),
-        migrate.WithDropColumn(true), 
-    )
+		migrate.WithDropIndex(true),
+		migrate.WithDropColumn(true),
+	)
 
-    if err != nil {
-        log.Fatalf("failed creating schema resources: %v", err)
-    }
+	if err != nil {
+		log.Fatalf("failed creating schema resources: %v", err)
+	}
 
-     svc := entpb.NewUserService(client)
+	svc := entpb.NewUserService(client)
 
-    // Create a new gRPC server (you can wire multiple services to a single server).
-    server := grpc.NewServer()
+	// Create a new gRPC server (you can wire multiple services to a single server).
+	server := grpc.NewServer()
 
-    // Register the User service with the server.
-    entpb.RegisterUserServiceServer(server, svc)
+	// Register the User service with the server.
+	entpb.RegisterUserServiceServer(server, svc)
 
-    // Open port 5000 for listening to traffic.
-    lis, err := net.Listen("tcp", ":5000")
-    if err != nil {
-        log.Fatalf("failed listening: %s", err)
-    }
+	// Open port 5000 for listening to traffic.
+	lis, err := net.Listen("tcp", ":5000")
+	if err != nil {
+		log.Fatalf("failed listening: %s", err)
+	}
 
-    // Listen for traffic indefinitely.
-    if err := server.Serve(lis); err != nil {
-        log.Fatalf("server ended: %s", err)
-    }
+	// Listen for traffic indefinitely.
+	if err := server.Serve(lis); err != nil {
+		log.Fatalf("server ended: %s", err)
+	}
 
 }
