@@ -18,3 +18,12 @@ https://entgo.io/blog/2021/03/18/generating-a-grpc-server-with-ent/
 I will definitely be playing with this a lot more in the future.
 
 The schema is in [./ent/schema/user.go](./ent/schema/user.go) if you'd like to see the model. I haven't tested with any other dialects than MySQL.
+
+To run the app, there are two commands:
+
+  - ```go run ./cmd/server/```
+  - ```go run ./cmd/client/```
+
+Once the server is started, it should automatically migrade the users table for you. The client will automatically make a Create request, retrieve the results, and send them back to stdout. 
+
+There is a small unit test available as well: [./pb_test.go](./pb_test.go)
