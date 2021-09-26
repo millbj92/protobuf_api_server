@@ -16,3 +16,5 @@ https://entgo.io/blog/2021/03/18/generating-a-grpc-server-with-ent/
   
   
 I will definitely be playing with this a lot more in the future.
+
+The schema is in [./ent/schema/user.go](./ent/schema/user.go) if you'd like to see the model. I haven't tested with any other dialects than MySQL.
