@@ -1,4 +1,4 @@
-# Go gRPC server with Object Relation Mapping using the Ent framework. 
+# Go gRPC server with ORM using the Ent framework. 
 
 
 While I'm still a little unsteady about code generation, I can't deny that this framework was able to accomplish quite a bit in just a few minutes. I love that they've integrated protobuf into their workflow so nicely.  
